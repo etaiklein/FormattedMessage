@@ -10,16 +10,19 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"*"
 	],
 	"main": "./extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			}
-		]
+		"contributes": {
+			"languages": [
+					{
+							"id": "javascript",
+							"aliases": ["Javascript", "javascript"],
+							"extensions": [".js", ".jsx"]
+					}
+			]
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",
