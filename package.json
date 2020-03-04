@@ -50,5 +50,6 @@
 		"react-intl",
 		"translate"
 	],
-	"devDependencies": {}
+	"devDependencies": {},
+	"dependencies": {}
 }
