@@ -1,4 +1,5 @@
 # FormattedMessage
+[Download: marketplace.visualstudio.com](https://marketplace.visualstudio.com/items?itemName=etaiklein.formatted-message)
 
 1. Select "hi" in code
 2. Right click and select "Format as FormattedMessage"
