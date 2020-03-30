@@ -25,7 +25,8 @@ function hashId(text = "") {
     hash = (hash << 5) - hash + char;
     hash |= 0; // Convert to 32bit integer
   }
-  return hash;
+
+  return Math.abs(hash); // remove leading '-'
 }
 
 function generateId(editor, originalText) {
@@ -39,6 +40,9 @@ function generateId(editor, originalText) {
 
   // change '/' to '.'
   id = id.split("/").join(".");
+
+  // remove leading '.' if any
+  id = id[0] === "." ? id.slice(1) : id;
 
   // TODO move whitelist to settings config
   // remove whitelisted paths
