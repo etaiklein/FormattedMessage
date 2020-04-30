@@ -19,13 +19,21 @@
 		"commands": [
 			{
 				"command": "extension.formattedMessage",
-				"title": "Format as FormattedMessage"
+				"title": "FormattedMessage (javascript)"
+			},
+			{
+				"command": "extension.transMessage",
+				"title": "trans.message (python)"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
 					"command": "extension.formattedMessage",
+					"group": "navigation"
+				},
+				{
+					"command": "extension.transMessage",
 					"group": "navigation"
 				}
 			]
@@ -35,6 +43,11 @@
 				"command": "extension.formattedMessage",
 				"key": "ctrl+shift+t",
 				"mac": "cmd+shift+t"
+			},
+			{
+				"command": "extension.transMessage",
+				"key": "ctrl+shift+r",
+				"mac": "cmd+shift+r"
 			}
 		]
 	},

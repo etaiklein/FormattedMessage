@@ -33,10 +33,7 @@ function generateId(editor, originalText) {
   let id = vscode.workspace.asRelativePath(editor.document.fileName);
 
   // remove filename extensions
-  id = id
-    .split(".")
-    .slice(0, -1)
-    .join("");
+  id = id.split(".").slice(0, -1).join("");
 
   // change '/' to '.'
   id = id.split("/").join(".");
@@ -49,23 +46,25 @@ function generateId(editor, originalText) {
   const whitelistedPaths = [
     "mobile.member.js.",
     "python.manhattan.static.js.",
-    "python.manhattan.oscar."
+    "python.manhattan.oscar.",
+    "python.batmobile.",
   ];
-  whitelistedPaths.forEach(path => {
+  whitelistedPaths.forEach((path) => {
     id = id.replace(path, "");
   });
   return id;
 }
 
 function activate(context) {
+  // for javascript files
   const formatMessage = vscode.commands.registerCommand(
     "extension.formattedMessage",
-    function() {
+    function () {
       const editor = getEditor();
       const originalText = getSelectedText(editor);
       const id = `${generateId(editor, originalText)}.${hashId(originalText)}`;
 
-      editor.edit(edit => {
+      editor.edit((edit) => {
         edit.replace(
           editor.selection,
           `<FormattedMessage defaultMessage="${originalText}" description="" id="${id}"/>`
@@ -73,8 +72,31 @@ function activate(context) {
       });
     }
   );
-
   context.subscriptions.push(formatMessage);
+
+  // for python files
+  const transMessage = vscode.commands.registerCommand(
+    "extension.transMessage",
+    function () {
+      const editor = getEditor();
+      const originalText = getSelectedText(editor);
+      const id = `${generateId(editor, originalText)}.${hashId(originalText)}`;
+
+      editor.edit((edit) => {
+        edit.replace(
+          editor.selection,
+          `trans.message(
+            id="${id}",
+            message="${originalText}",
+            language=current_user.language,
+            description="",
+          )`
+        );
+      });
+    }
+  );
+
+  context.subscriptions.push(transMessage);
 }
 exports.activate = activate;
 
@@ -82,5 +104,5 @@ function deactivate() {}
 
 module.exports = {
   activate,
-  deactivate
+  deactivate,
 };
