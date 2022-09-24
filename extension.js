@@ -1,3 +1,4 @@
+const { interpolateName } = require("@formatjs/ts-transformer");
 const vscode = require("vscode");
 
 function getEditor() {
@@ -29,6 +30,16 @@ function hashId(text = "") {
   return Math.abs(hash); // remove leading '-'
 }
 
+const getFileName = () => vscode.window.activeTextEditor.document.fileName;
+
+function getInterpolatedName(originalText, interpolationPattern) {
+  return interpolateName(
+    { resourcePath: getFileName() },
+    interpolationPattern /* Defaults to '[hash].[ext]'. */,
+    { content: originalText }
+  );
+}
+
 function generateId(editor, originalText) {
   let id = vscode.workspace.asRelativePath(editor.document.fileName);
 
@@ -55,6 +66,18 @@ function generateId(editor, originalText) {
   return id;
 }
 
+function getMessageId(editor, originalText) {
+  const idPattern = vscode.workspace
+    .getConfiguration("extension.formattedMessage")
+    .get("idGenerationPattern");
+  const id =
+    idPattern === "default"
+      ? `${generateId(editor, originalText)}.${hashId(originalText)}`
+      : getInterpolatedName(originalText, idPattern);
+
+  return id;
+}
+
 function activate(context) {
   // for javascript files
   const formatMessage = vscode.commands.registerCommand(
@@ -62,7 +85,7 @@ function activate(context) {
     function () {
       const editor = getEditor();
       const originalText = getSelectedText(editor);
-      const id = `${generateId(editor, originalText)}.${hashId(originalText)}`;
+      const id = getMessageId(editor, originalText);
 
       editor.edit((edit) => {
         edit.replace(
@@ -80,7 +103,7 @@ function activate(context) {
     function () {
       const editor = getEditor();
       const originalText = getSelectedText(editor);
-      const id = `${generateId(editor, originalText)}.${hashId(originalText)}`;
+      const id = getMessageId(editor, originalText);
 
       editor.edit((edit) => {
         edit.replace(
