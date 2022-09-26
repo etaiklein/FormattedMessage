@@ -4,7 +4,7 @@
 	"repository": "https://github.com/etaiklein/FormattedMessage",
 	"publisher": "etaiklein",
 	"description": "Replaces a string with <FormattedMessage /> syntax to make translating strings using react-intl easier",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.42.0"
 	},
@@ -49,7 +49,29 @@
 				"key": "ctrl+shift+r",
 				"mac": "cmd+shift+r"
 			}
-		]
+		],
+		"configuration": {
+			"title": "FormattedMessage",
+			"properties": {
+				"extension.formattedMessage.idGenerationPattern": {
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"[sha512:contenthash:base64:6]"
+					],
+					"enumItemLabels": [
+						"Default",
+						"FormatJS recommended ([sha512:contenthash:base64:6])"
+					],
+					"enumDescriptions": [
+						"The id will be generated using the file path and a random hash id",
+						"The id will be generated using id interpolation that FormatJS uses by default. This will match some FormatJS linting configurations."
+					],
+					"description": "Specify which id generation pattern to use. This only applies to <FormattedMessage /> syntax."
+				}
+			}
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",
@@ -64,5 +86,7 @@
 		"translate"
 	],
 	"devDependencies": {},
-	"dependencies": {}
+	"dependencies": {
+		"@formatjs/ts-transformer": "^3.10.0"
+	}
 }
