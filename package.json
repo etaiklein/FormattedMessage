@@ -51,27 +51,27 @@
 			}
 		],
 		"configuration": {
-      "title": "FormattedMessage",
-      "properties": {
-        "extension.formattedMessage.idGenerationPattern": {
-          "type": "string",
-          "default": "default",
-          "enum": [
-            "default",
-            "[sha512:contenthash:base64:6]"
-          ],
-          "enumItemLabels": [
-            "Default",
-            "FormatJS recommended ([sha512:contenthash:base64:6])"
-          ],
-          "enumDescriptions": [
-            "The id will be generated using the file path and a random hash id",
-            "The id will be generated using id interpolation that FormatJS uses by default. This will match some FormatJS linting configurations."
-          ],
-          "description": "Specify which id generation pattern to use. This only applies to <FormattedMessage /> syntax."
-        }
-      }
-    }
+			"title": "FormattedMessage",
+			"properties": {
+				"extension.formattedMessage.idGenerationPattern": {
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"[sha512:contenthash:base64:6]"
+					],
+					"enumItemLabels": [
+						"Default",
+						"FormatJS recommended ([sha512:contenthash:base64:6])"
+					],
+					"enumDescriptions": [
+						"The id will be generated using the file path and a random hash id",
+						"The id will be generated using id interpolation that FormatJS uses by default. This will match some FormatJS linting configurations."
+					],
+					"description": "Specify which id generation pattern to use. This only applies to <FormattedMessage /> syntax."
+				}
+			}
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",
@@ -87,6 +87,6 @@
 	],
 	"devDependencies": {},
 	"dependencies": {
-    "@formatjs/ts-transformer": "^3.10.0"
-  }
+		"@formatjs/ts-transformer": "^3.10.0"
+	}
 }

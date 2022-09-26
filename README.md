@@ -9,5 +9,7 @@
 
 Changelog
 
+- 1.0.4:
+  - Add configuration to customize id generation pattern based on FormatJS default pattern. Go to **Settings > Extensions > FormattedMessage > ID Generation Pattern**.
 - 0.02:
   - Right click and select "trans.message (python)" for python formatting

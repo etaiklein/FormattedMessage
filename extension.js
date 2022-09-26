@@ -1,4 +1,3 @@
-const { interpolateName } = require("@formatjs/ts-transformer");
 const vscode = require("vscode");
 
 function getEditor() {
@@ -33,6 +32,7 @@ function hashId(text = "") {
 const getFileName = () => vscode.window.activeTextEditor.document.fileName;
 
 function getInterpolatedName(originalText, interpolationPattern) {
+  const {interpolateName} = require("@formatjs/ts-transformer");
   return interpolateName(
     { resourcePath: getFileName() },
     interpolationPattern /* Defaults to '[hash].[ext]'. */,
