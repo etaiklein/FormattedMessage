@@ -1,9 +1,13 @@
 {
 	"name": "formatted-message",
 	"displayName": "FormattedMessage",
-	"repository": "https://github.com/etaiklein/FormattedMessage",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/etaiklein/FormattedMessage"
+	},
 	"publisher": "etaiklein",
 	"description": "Replaces a string with <FormattedMessage /> syntax to make translating strings using react-intl easier",
+	"icon": "FM.jpg",
 	"version": "1.0.4",
 	"engines": {
 		"vscode": "^1.42.0"
