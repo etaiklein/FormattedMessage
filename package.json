@@ -81,7 +81,7 @@
 						"python.manhattan.oscar.",
 						"python.manhattan.static.js."
 					],
-					"description": "Only used for the the default file path id generation option"
+					"description": "AllowlistedPaths exlude sections of long ids (default file path id generation option only)"
 				}
 			}
 		}
