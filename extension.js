@@ -52,15 +52,11 @@ function generateId(editor, originalText) {
   // remove leading '.' if any
   id = id[0] === "." ? id.slice(1) : id;
 
-  // TODO move whitelist to settings config
-  // remove whitelisted paths
-  const whitelistedPaths = [
-    "mobile.member.js.",
-    "python.manhattan.static.js.",
-    "python.manhattan.oscar.",
-    "python.batmobile.",
-  ];
-  whitelistedPaths.forEach((path) => {
+  const allowlistedPaths = vscode.workspace
+    .getConfiguration("extension.formattedMessage")
+    .get("allowlistedPaths");
+
+    allowlistedPaths.forEach((path) => {
     id = id.replace(path, "");
   });
   return id;

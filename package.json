@@ -4,7 +4,7 @@
 	"repository": "https://github.com/etaiklein/FormattedMessage",
 	"publisher": "etaiklein",
 	"description": "Replaces a string with <FormattedMessage /> syntax to make translating strings using react-intl easier",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"engines": {
 		"vscode": "^1.42.0"
 	},
@@ -69,6 +69,19 @@
 						"The id will be generated using id interpolation that FormatJS uses by default. This will match some FormatJS linting configurations."
 					],
 					"description": "Specify which id generation pattern to use. This only applies to <FormattedMessage /> syntax."
+				},
+				"extension.formattedMessage.allowlistedPaths": {
+					"type": "array",
+					"default": [
+						"mobile.libs.data-access.",
+						"mobile.libs.feature.",
+						"mobile.libs.ui.",
+						"mobile.libs.utils",
+						"python.batmobile.",
+						"python.manhattan.oscar.",
+						"python.manhattan.static.js."
+					],
+					"description": "Only used for the the default file path id generation option"
 				}
 			}
 		}
