@@ -8,7 +8,7 @@
 	"publisher": "etaiklein",
 	"description": "Replaces a string with <FormattedMessage /> syntax to make translating strings using react-intl easier",
 	"icon": "FM.jpg",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"engines": {
 		"vscode": "^1.42.0"
 	},
