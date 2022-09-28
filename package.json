@@ -18,7 +18,7 @@
 	"activationEvents": [
 		"onCommand:extension.formattedMessage"
 	],
-	"main": "./extension.js",
+	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -93,7 +93,13 @@
 	"scripts": {
 		"lint": "eslint .",
 		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
+		"test": "node ./test/runTest.js",
+		"vscode:prepublish": "npm run build",
+		"esbuild-base": "esbuild ./src/extension.js --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+	 	"build": "npm run esbuild-base -- --minify",
+		"build:dev": "npm run esbuild-base -- --sourcemap",
+		"dev": "npm run esbuild-base -- --sourcemap --watch",
+		"test-compile": "tsc -p ./"
 	},
 	"keywords": [
 		"translation",
@@ -102,7 +108,9 @@
 		"react-intl",
 		"translate"
 	],
-	"devDependencies": {},
+	"devDependencies": {
+		"esbuild": "^0.15.9"
+	},
 	"dependencies": {
 		"@formatjs/ts-transformer": "^3.10.0"
 	}

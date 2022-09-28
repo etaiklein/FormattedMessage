@@ -1,4 +1,4 @@
-const vscode = require("vscode");
+import * as  vscode from "vscode";
 
 function getEditor() {
   const editor = vscode.window.activeTextEditor;
@@ -79,6 +79,7 @@ function activate(context) {
   const formatMessage = vscode.commands.registerCommand(
     "extension.formattedMessage",
     function () {
+      vscode.window.showInformationMessage(`Esta es la nueva versión.`)
       const editor = getEditor();
       const originalText = getSelectedText(editor);
       const id = getMessageId(editor, originalText);
