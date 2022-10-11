@@ -1,4 +1,4 @@
-const vscode = require("vscode");
+import * as  vscode from "vscode";
 
 function getEditor() {
   const editor = vscode.window.activeTextEditor;
